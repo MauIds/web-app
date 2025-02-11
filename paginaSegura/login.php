@@ -21,18 +21,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <Form method = "POST" action = "login.php">
-        <label> Usuario: </label>
-        <input type = "text" name = "usuario"><br>
-        <label> Contraseña: </label>
-        <input type = "password" name = "llave"><br>
-        <input type = "submit" value = "Ingresar">
-    </Form>
+    <form method="POST" action="login.php">
+        <label>Usuario:</label>
+        <input type="text" name="usuario"><br>
+        <label>Contraseña:</label>
+        <input type="password" name="llave"><br>
+        <input type="submit" value="Ingresar">
+    </form>
     <?php
-        if(isset($error)){
-            echo "<p>". $error . "</p>";
+        if (isset($error)) {
+            echo "<p>" . $error . "</p>";
         }
     ?>
 </body>
