@@ -1,19 +1,19 @@
 <?php
-    session_start();
-    //Usuarios
-    $usuarios = ["usuario1" => "12345", "admin" => "admin"];
-    //Validar si el usuario y contraseña son correctos
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $user = $_POST["usuario"];
-        $pass = $_POST["llave"];
-        if(isset($usuarios[$user]) && $usuarios[$user]==$pass){
-            $_SESSION["usuario"] = $user;
-            header("Location: main.php");
-            exit();
-        } else{
-            $error = "El usuario o contraseña son incorrectos";
-        }
+session_start();
+//Usuarios
+$usuarios = ["usuario1" => "12345", "admin" => "admin"];
+//Validar si el usuario y contraseña son correctos
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $user = $_POST["usuario"];
+    $pass = $_POST["llave"];
+    if(isset($usuarios[$user]) && $usuarios[$user]==$pass){
+        $_SESSION["usuario"] = $user;
+        header("Location: main.php");
+        exit();
+    } else{
+        $error = "El usuario o contraseña son incorrectos";
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,5 +36,6 @@
             echo "<p>" . $error . "</p>";
         }
     ?>
+    <a href="nuevoUsuario.php">Sign Up</a>
 </body>
 </html>

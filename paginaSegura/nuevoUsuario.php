@@ -1,4 +1,9 @@
 <?php
+require_once("funciones.php");
+if(isset($_POST["usuario"])&& isset($_POST["password"])&& isset($_POST["nombre"])&& isset($_POST["apellido"])&& isset($_POST["correo"])
+){
+    agregarUsuario($_POST["usuario"], $_POST["password"], $_POST["nombre"], $_POST["apellido"], $_POST["correo"]);
+}
 
 ?>
 
@@ -8,6 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="styles1.css">
 </head>
 
 <body>
