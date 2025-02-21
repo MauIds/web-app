@@ -15,5 +15,6 @@
 <body>
     <h1>Bienvenido <?php echo $_SESSION["usuario"]; ?></h1>
     <a href = "logout.php">Cerrar sesión</a>
+    <a href = "lista_items.php">Ver lista de items</a>
 </body>
 </html>
