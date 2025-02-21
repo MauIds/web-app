@@ -35,6 +35,35 @@ function agregarUsuario($usuario, $password, $nombre, $apellido, $correo)
     } else {
         echo "Error al preparar la consulta";
     }
+   
+}
 
+
+session_start();
+function entrada($usuario, $password)
+{
+    $conexion = conectar();
+    $sql = "SELECT PASSWORD FROM usuarioss WHERE usuario = ?";
+    $stmt = mysqli_prepare($conexion, $sql);
+    if ($stmt){
+        mysqli_stmt_bind_param($stmt, "s", $usuario);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_store_result($stmt);
+        if (mysqli_stmt_num_rows($stmt)>0){
+            
+            mysqli_stmt_bind_result($stmt, $password_en_bd);
+            mysqli_stmt_fetch($stmt);
+            if (password_verify($password, $password_en_bd))
+            {
+                $_SESSION["usuario"] = $usuario;
+                header("Location: main.php");
+                exit();
+            } else {
+                $error = "El usuario o contraseña son incorrectos";
+            }
+        } else {
+            $error = "El usuario no existe";
+        }
+    }      
 }
 ?>

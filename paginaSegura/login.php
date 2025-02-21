@@ -1,18 +1,21 @@
 <?php
-session_start();
+//session_start();
 //Usuarios
-$usuarios = ["usuario1" => "12345", "admin" => "admin"];
+//$usuarios = ["usuario1" => "12345", "admin" => "admin"];
 //Validar si el usuario y contraseña son correctos
+require_once("funciones.php");
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $user = $_POST["usuario"];
     $pass = $_POST["llave"];
+    entrada($user, $pass);
+    /*
     if(isset($usuarios[$user]) && $usuarios[$user]==$pass){
         $_SESSION["usuario"] = $user;
         header("Location: main.php");
         exit();
     } else{
         $error = "El usuario o contraseña son incorrectos";
-    }
+    }*/
 }
 ?>
 <!DOCTYPE html>
