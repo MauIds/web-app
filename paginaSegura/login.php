@@ -1,21 +1,12 @@
 <?php
-//session_start();
-//Usuarios
-//$usuarios = ["usuario1" => "12345", "admin" => "admin"];
-//Validar si el usuario y contraseña son correctos
 require_once("funciones.php");
+session_start();
+$error = "";
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $user = $_POST["usuario"];
     $pass = $_POST["llave"];
     entrada($user, $pass);
-    /*
-    if(isset($usuarios[$user]) && $usuarios[$user]==$pass){
-        $_SESSION["usuario"] = $user;
-        header("Location: main.php");
-        exit();
-    } else{
-        $error = "El usuario o contraseña son incorrectos";
-    }*/
 }
 ?>
 <!DOCTYPE html>
@@ -29,13 +20,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <form method="POST" action="login.php">
         <label>Usuario:</label>
-        <input type="text" name="usuario"><br>
+        <input type="text" name="usuario" required><br>
         <label>Contraseña:</label>
-        <input type="password" name="llave"><br>
+        <input type="password" name="llave" required><br>
         <input type="submit" value="Ingresar">
     </form>
     <?php
-        if (isset($error)) {
+        if (!empty($error)) {
             echo "<p>" . $error . "</p>";
         }
     ?>
